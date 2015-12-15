@@ -22,11 +22,11 @@ apply plugin: 'idea'
 apply plugin: 'spring-boot'
 
 springBoot {
-    mainClass = "com.thoughtworks.jimmy.SpringBootWebApplication"
+    mainClass = "bookshelf.SpringBootWebApplication"
 }
 
 jar {
-    baseName = 'thwo-bookshelf-service'
+    baseName = 'bookshelf-service'
     version = '0.1.0'
 }
 
