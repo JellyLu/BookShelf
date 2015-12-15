@@ -1,0 +1,46 @@
+group 'BookShelf'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.8'
+}
+
+defaultTasks 'clean', 'build'
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+springBoot {
+    mainClass = "com.thoughtworks.jimmy.SpringBootWebApplication"
+}
+
+jar {
+    baseName = 'thwo-bookshelf-service'
+    version = '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile 'org.webjars:bootstrap:3.3.4'
+    compile 'org.webjars:jquery:2.1.4'
+}
+
