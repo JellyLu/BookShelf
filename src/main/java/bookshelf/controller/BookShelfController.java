@@ -33,7 +33,11 @@ public class BookShelfController {
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
     public @ResponseBody Iterable<Book> addBook(@RequestParam("isbn") String isbn, @RequestParam("name") String name,
-                                                @RequestParam("author") String author, @RequestParam("price") Double price){
+                                                @RequestParam("author") String author, @RequestParam("price") Double price) throws Exception {
+
+        if ( isbn == null || isbn.length() == 0 || name == null || name.length() == 0 ){
+            throw new Exception( "参数不能为空" );
+        }
 
         return bookService.addBook( isbn, name, author, price);
     }
@@ -46,8 +50,10 @@ public class BookShelfController {
 
     @RequestMapping(value = "book/edit", method = RequestMethod.POST)
     public @ResponseBody Book updateBook(@RequestParam("isbn") String isbn, @RequestParam("name") String name,
-                                         @RequestParam("author") String author, @RequestParam("price") Double price) {
-
+                                         @RequestParam("author") String author, @RequestParam("price") Double price) throws Exception {
+        if ( isbn == null || isbn.length() == 0 || name == null || name.length() == 0 ){
+            throw new Exception( "参数不能为空" );
+        }
         return bookService.updateBook( isbn, name, author, price);
     }
 
