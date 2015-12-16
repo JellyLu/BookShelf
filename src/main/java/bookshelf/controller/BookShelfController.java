@@ -13,6 +13,11 @@ public class BookShelfController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    public BookShelfController( BookService bookService){
+        this.bookService = bookService;
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public @ResponseBody Iterable<Book> queryBooks() {
 
@@ -28,7 +33,7 @@ public class BookShelfController {
     @RequestMapping(value = "book/new", method = RequestMethod.GET)
     public @ResponseBody Book createBook(){
 
-        return  new Book();
+        return  new Book("","","",0.0);
     }
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
