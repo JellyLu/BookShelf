@@ -47,7 +47,7 @@ public class BookServiceImplTest {
     public void should_not_find_by_isbn(){
         Book book = bookService.findByIsbn( "9780132350884" );
 
-        assertThat( book, is(  ));
+        assertThat( book.getName(), is( "Clean Code"  ));
     }
 
     @Test
