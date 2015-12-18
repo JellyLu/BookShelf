@@ -67,7 +67,7 @@ public class BookShelfControllerTest {
 
     @Test
     public void test_add_book() throws Exception {
-        String requestBody = "\"isbn\":9780132350875, \"name\":\"Test Driven Development by Example\",\"author\":\"Kent Beck\",\"price\":49.44";
+        String requestBody = "{\"isbn\":\"9780132350875\", \"name\":\"Test Driven Development by Example\",\"author\":\"Kent Beck\",\"price\":49.44}";
         MvcResult result  = mockMvc.perform( MockMvcRequestBuilders.post("/book")
                 .contentType(MediaType.APPLICATION_JSON).content(requestBody)
                 .accept(MediaType.APPLICATION_JSON))
@@ -93,8 +93,8 @@ public class BookShelfControllerTest {
 
     @Test
     public void test_update_9780132350884() throws Exception {
-        String requestBody = "{\"isbn\":9780132350884, \"name\":\"Clean Code\",\"author\":\"Robert C. Martin\",\"price\":32.44}";
-        MvcResult result  = mockMvc.perform( MockMvcRequestBuilders.post("/book/edit")
+        String requestBody = "{\"isbn\":\"9780132350884\", \"name\":\"Clean Code\",\"author\":\"Robert C. Martin\",\"price\":32.44}";
+        mockMvc.perform( MockMvcRequestBuilders.post("/book/edit")
                 .contentType(MediaType.APPLICATION_JSON).content(requestBody)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class BookServiceImplTest {
@@ -37,17 +38,17 @@ public class BookServiceImplTest {
     }
 
     @Test
-    public void should_find_by_isbn_9780132350884(){
-        Book book = bookService.findByIsbn( "9780132350884" );
+    public void should_find_by_isbn_9780201485677(){
+        Book book = bookService.findByIsbn( "9780201485677" );
 
-            assertThat( book.getName(), is( "Clean Code" ));
+            assertThat( book.getName(), is( "Refactoring" ));
     }
 
     @Test
     public void should_not_find_by_isbn(){
-        Book book = bookService.findByIsbn( "9780132350884" );
+        Book book = bookService.findByIsbn( "9780132350886" );
 
-        assertThat( book.getName(), is( "Clean Code"  ));
+        assertNull( book );
     }
 
     @Test

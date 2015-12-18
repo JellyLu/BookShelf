@@ -26,17 +26,21 @@ public class BookServiceImpl implements BookService{
 
     @Override
     public Iterable<Book> addBook( String isbn, String name, String author, Double price ){
-        return bookRepository.addBook( new Book( isbn, name, author, price) );
+         bookRepository.addBook( new Book( isbn, name, author, price) );
+         return bookRepository.findAll();
     }
 
     @Override
     public Book updateBook(String isbn, String name, String author, Double price){
-        return bookRepository.updateOne( new Book( isbn, name, author, price) );
+         bookRepository.updateOne( new Book( isbn, name, author, price) );
+         return bookRepository.findOne( isbn );
     }
 
     @Override
     public Iterable<Book> deleteBook( String isbn ){
-        return bookRepository.deleteBook( isbn );
+
+         bookRepository.deleteBook( isbn );
+         return bookRepository.findAll();
     }
 
 }

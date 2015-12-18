@@ -25,19 +25,16 @@ public class BookRepository {
         return BOOKS_MAP.get(isbn);
     }
 
-    public Book updateOne( Book book ){
+    public void updateOne( Book book ){
         BOOKS_MAP.put( book.getIsbn(), book );
-        return findOne( book.getIsbn() );
     }
 
-    public Iterable<Book> addBook( Book book){
+    public void addBook( Book book){
         BOOKS_MAP.put( book.getIsbn(), book );
-        return findAll();
     }
 
-    public Iterable<Book> deleteBook( String isbn ){
+    public void deleteBook( String isbn ){
         BOOKS_MAP.remove( isbn );
-        return findAll();
     }
 
 }
