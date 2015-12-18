@@ -37,14 +37,13 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
-    public @ResponseBody Iterable<Book> addBook(@RequestParam("isbn") String isbn, @RequestParam("name") String name,
-                                                @RequestParam("author") String author, @RequestParam("price") Double price) throws Exception {
+    public @ResponseBody Iterable<Book> addBook(@RequestBody Book book) throws Exception {
 
-        if ( isbn == null || isbn.length() == 0 || name == null || name.length() == 0 ){
+        if ( book.getIsbn() == null || book.getIsbn().length() == 0 || book.getName() == null || book.getName().length() == 0 ){
             throw new Exception( "参数不能为空" );
         }
 
-        return bookService.addBook( isbn, name, author, price);
+        return bookService.addBook( book );
     }
 
     @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
@@ -54,12 +53,11 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book/edit", method = RequestMethod.POST)
-    public @ResponseBody Book updateBook(@RequestParam("isbn") String isbn, @RequestParam("name") String name,
-                                         @RequestParam("author") String author, @RequestParam("price") Double price) throws Exception {
-        if ( isbn == null || isbn.length() == 0 || name == null || name.length() == 0 ){
+    public @ResponseBody Book updateBook(@RequestBody Book book ) throws Exception {
+        if ( book.getIsbn() == null || book.getIsbn().length() == 0 || book.getName() == null || book.getName().length() == 0 ){
             throw new Exception( "参数不能为空" );
         }
-        return bookService.updateBook( isbn, name, author, price);
+        return bookService.updateBook( book );
     }
 
     @RequestMapping(value = "book/delete/{isbn}", method = RequestMethod.GET)

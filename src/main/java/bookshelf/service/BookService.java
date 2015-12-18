@@ -7,9 +7,9 @@ public interface BookService {
 
     Book findByIsbn(String isbn);
 
-    Iterable<Book> addBook( String isbn, String name, String author, Double price );
+    Iterable<Book> addBook( Book book );
 
-    Book updateBook( String isbn, String name, String author, Double price );
+    Book updateBook( Book book );
 
     Iterable<Book> deleteBook( String isbn );
 }

@@ -54,7 +54,7 @@ public class BookServiceImplTest {
     @Test
     public void should_return_4_books_when_add_one(){
 
-        Iterable<Book> books = bookService.addBook( "9780132350555", "Test Driven Development by Example", "Kent Beck",  30.32 );
+        Iterable<Book> books = bookService.addBook( new Book( "9780132350555", "Test Driven Development by Example", "Kent Beck",  30.32) );
 
         for ( Book book: books) {
             assertThat( book, is( bookRepository.BOOKS_MAP.get( book.getIsbn() ) ));
@@ -64,7 +64,7 @@ public class BookServiceImplTest {
     @Test
     public void should_return_new_book_when_update_9780132350884(){
 
-        Book book = bookService.updateBook( "9780132350884", "Effective Java 2", "Joshua Bloch",  35.99 );
+        Book book = bookService.updateBook( new Book( "9780132350884", "Effective Java 2", "Joshua Bloch",  35.99  ));
 
         assertThat( book.getName(), is( "Effective Java 2" ));
     }

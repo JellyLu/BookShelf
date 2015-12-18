@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9893dc6-3817-4c11-9011-15f349f1c3db" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bookshelf/repository/BookRepository.java" afterPath="$PROJECT_DIR$/src/main/java/bookshelf/repository/BookRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java" afterPath="$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bookshelf/service/BookService.java" afterPath="$PROJECT_DIR$/src/main/java/bookshelf/service/BookService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java" afterPath="$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/service/BookServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/service/BookServiceImplTest.java" />
@@ -46,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+              <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -65,8 +66,8 @@
       <file leaf-file-name="BookShelfControllerTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3316062">
-              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.8652849">
+              <caret line="48" column="83" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,17 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/java/service/BookServiceImplTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="43" column="56" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+              <caret line="56" column="137" selection-start-line="56" selection-start-column="137" selection-end-line="56" selection-end-column="137" />
               <folding />
             </state>
           </provider>
@@ -98,7 +89,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/repository/BookRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-4.148148">
-              <caret line="13" column="79" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="79" />
+              <caret line="13" column="104" selection-start-line="13" selection-start-column="99" selection-end-line="13" selection-end-column="104" />
               <folding>
                 <element signature="e#894#895#0" expanded="true" />
                 <element signature="e#947#948#0" expanded="true" />
@@ -563,11 +554,12 @@
         <option value="$PROJECT_DIR$/src/test/java/webcontroller/BookShelfControllerTest.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/bookshelf/model/Book.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java" />
-        <option value="$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookshelf/repository/BookRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookshelf/service/BookService.java" />
         <option value="$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/test/java/service/BookServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java" />
       </list>
     </option>
   </component>
@@ -579,6 +571,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
@@ -818,6 +811,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BookShelf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BookShelf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookshelf" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="repository" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -894,45 +917,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Gradle.test_update_9780132350884">
-    <configuration default="false" name="test_add_book" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;controller.BookShelfControllerTest.test_add_book&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="cleanTest" />
-            <option value="test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="false" name="test_delete_book" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;controller.BookShelfControllerTest.test_delete_book&quot;" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="cleanTest" />
-            <option value="test" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Gradle.BookShelfControllerTest">
     <configuration default="false" name="test_update_9780132350884" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -977,6 +962,44 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="--tests &quot;service.BookServiceImplTest.should_not_find_by_isbn&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="cleanTest" />
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="BookShelfControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests controller.BookShelfControllerTest" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="cleanTest" />
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="test_find_book_9780132350884" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;controller.BookShelfControllerTest.test_find_book_9780132350884&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -1235,19 +1258,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Gradle.test_add_book" />
-      <item index="1" class="java.lang.String" itemvalue="Gradle.test_delete_book" />
-      <item index="2" class="java.lang.String" itemvalue="Gradle.test_update_9780132350884" />
-      <item index="3" class="java.lang.String" itemvalue="Gradle.BookServiceImplTest" />
-      <item index="4" class="java.lang.String" itemvalue="Gradle.should_not_find_by_isbn" />
+      <item index="0" class="java.lang.String" itemvalue="Gradle.test_update_9780132350884" />
+      <item index="1" class="java.lang.String" itemvalue="Gradle.BookServiceImplTest" />
+      <item index="2" class="java.lang.String" itemvalue="Gradle.should_not_find_by_isbn" />
+      <item index="3" class="java.lang.String" itemvalue="Gradle.BookShelfControllerTest" />
+      <item index="4" class="java.lang.String" itemvalue="Gradle.test_find_book_9780132350884" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Gradle.test_update_9780132350884" />
-        <item index="1" class="java.lang.String" itemvalue="Gradle.BookServiceImplTest" />
-        <item index="2" class="java.lang.String" itemvalue="Gradle.should_not_find_by_isbn" />
-        <item index="3" class="java.lang.String" itemvalue="Gradle.test_add_book" />
-        <item index="4" class="java.lang.String" itemvalue="Gradle.test_delete_book" />
+        <item index="0" class="java.lang.String" itemvalue="Gradle.BookShelfControllerTest" />
+        <item index="1" class="java.lang.String" itemvalue="Gradle.test_find_book_9780132350884" />
+        <item index="2" class="java.lang.String" itemvalue="Gradle.test_update_9780132350884" />
+        <item index="3" class="java.lang.String" itemvalue="Gradle.BookServiceImplTest" />
+        <item index="4" class="java.lang.String" itemvalue="Gradle.should_not_find_by_isbn" />
       </list>
     </recent_temporary>
   </component>
@@ -1265,34 +1288,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BookServiceImplTest - 2015.12.18 at 13h 55m 55s.xml">
+    <history-entry file="BookServiceImplTest - 2015.12.18 at 14h 13m 59s.xml">
       <configuration name="BookServiceImplTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="BookServiceImplTest - 2015.12.18 at 13h 58m 18s.xml">
+    <history-entry file="BookServiceImplTest - 2015.12.18 at 14h 14m 52s.xml">
       <configuration name="BookServiceImplTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="BookServiceImplTest - 2015.12.18 at 13h 59m 54s.xml">
-      <configuration name="BookServiceImplTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="BookShelfControllerTest - 2015.12.18 at 14h 15m 22s.xml">
+      <configuration name="BookShelfControllerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="should_not_find_by_isbn - 2015.12.18 at 13h 57m 21s.xml">
-      <configuration name="should_not_find_by_isbn" configurationId="GradleRunConfiguration" />
+    <history-entry file="BookShelfControllerTest - 2015.12.18 at 14h 16m 13s.xml">
+      <configuration name="BookShelfControllerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="should_not_find_by_isbn - 2015.12.18 at 13h 58m 11s.xml">
-      <configuration name="should_not_find_by_isbn" configurationId="GradleRunConfiguration" />
+    <history-entry file="BookShelfControllerTest - 2015.12.18 at 14h 18m 13s.xml">
+      <configuration name="BookShelfControllerTest" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="test_update_9780132350884 - 2015.12.17 at 02h 14m 20s.xml">
+    <history-entry file="BookShelfControllerTest - 2015.12.18 at 14h 19m 00s.xml">
+      <configuration name="BookShelfControllerTest" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="test_find_book_9780132350884 - 2015.12.18 at 14h 18m 47s.xml">
+      <configuration name="test_find_book_9780132350884" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="test_update_9780132350884 - 2015.12.18 at 14h 08m 35s.xml">
       <configuration name="test_update_9780132350884" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="test_update_9780132350884 - 2015.12.17 at 14h 12m 18s.xml">
+    <history-entry file="test_update_9780132350884 - 2015.12.18 at 14h 11m 19s.xml">
       <configuration name="test_update_9780132350884" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="test_update_9780132350884 - 2015.12.17 at 14h 20m 46s.xml">
-      <configuration name="test_update_9780132350884" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="test_update_9780132350884 - 2015.12.17 at 14h 30m 24s.xml">
-      <configuration name="test_update_9780132350884" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="test_update_9780132350884 - 2015.12.18 at 14h 01m 20s.xml">
+    <history-entry file="test_update_9780132350884 - 2015.12.18 at 14h 16m 01s.xml">
       <configuration name="test_update_9780132350884" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -1306,7 +1329,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="709" extended-state="6" />
+    <frame x="1" y="23" width="1280" height="709" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1316,7 +1339,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3241491" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1326,7 +1349,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3987034" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1374,7 +1397,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1703,13 +1726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/service/BookService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3470437">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/respository/BookRepositoryTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1753,14 +1769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="44" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1769,10 +1777,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/service/BookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/service/BookServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="9" selection-start-line="43" selection-start-column="9" selection-end-line="43" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/repository/BookRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.148148">
-          <caret line="13" column="79" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="79" />
+          <caret line="13" column="104" selection-start-line="13" selection-start-column="99" selection-end-line="13" selection-end-column="104" />
           <folding>
             <element signature="e#894#895#0" expanded="true" />
             <element signature="e#947#948#0" expanded="true" />
@@ -1787,23 +1819,15 @@
     <entry file="file://$PROJECT_DIR$/src/test/java/service/BookServiceImplTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="56" selection-start-line="43" selection-start-column="56" selection-end-line="43" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bookshelf/controller/BookShelfController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <caret line="56" column="137" selection-start-line="56" selection-start-column="137" selection-end-line="56" selection-end-column="137" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/controller/BookShelfControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3316062">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.8652849">
+          <caret line="48" column="83" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

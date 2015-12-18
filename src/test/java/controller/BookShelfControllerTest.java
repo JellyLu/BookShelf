@@ -42,15 +42,15 @@ public class BookShelfControllerTest {
 
     @Test
     public void test_find_book_9780132350884() throws Exception {
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/9780132350884")
+        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/9780201485677")
                                    .accept(MediaType.APPLICATION_JSON))
                                    .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                                    .andExpect(status().isOk())
-                                   .andExpect(jsonPath("$.name").value("Clean Code"))
+                                   .andExpect(jsonPath("$.name").value("Refactoring"))
                                    .andReturn();
 
         String response = result.getResponse().getContentAsString();
-        assertThat( response, is( "{\"isbn\":\"9780132350884\",\"name\":\"Clean Code\",\"author\":\"Robert C. Martin\",\"price\":35.44}"));
+        assertThat( response, is( "{\"isbn\":\"9780201485677\",\"name\":\"Refactoring\",\"author\":\"Martin Fowler\",\"price\":64.99}"));
     }
 
     @Test
