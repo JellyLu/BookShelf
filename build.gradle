@@ -39,9 +39,16 @@ targetCompatibility = 1.8
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework:spring-test:4.1.6.RELEASE")
-    compile("com.jayway.jsonpath:json-path:0.9.0")
+    compile("com.h2database:h2")
+    compile("mysql:mysql-connector-java:5.1.6")
+    compile('org.flywaydb:flyway-core:3.2.1')
+    compile('org.slf4j:slf4j-api:1.7.12')
+    compile('com.google.code.gson:gson:2.5')
+    testCompile ('com.jayway.jsonpath:json-path:2.1.0')
+    testCompile("org.springframework.boot:spring-boot-starter-test")
     compile('net.sf.json-lib:json-lib:2.4:jdk15')
     compile('org.webjars:bootstrap:3.3.4')
     compile('org.webjars:jquery:2.1.4')
@@ -49,3 +56,18 @@ dependencies {
     compile('junit:junit:4.11')
 }
 
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+        resources.srcDirs = ['src/main/resources']
+    }
+    test {
+        java.srcDirs = ['src/test/intg/java', 'src/test/unit/java']
+        resources.srcDirs = ['src/test/intg/resources', 'src/test/unit/resources']
+    }
+}
+
+task initSourceFolders << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}

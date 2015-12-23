@@ -1,32 +1,40 @@
 package controller;
 
 import bookshelf.controller.BookShelfController;
+import bookshelf.model.Book;
 import bookshelf.repository.BookRepository;
-import bookshelf.service.BookService;
-import bookshelf.service.BookServiceImpl;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONValue;
+import application.SpringBootWebApplicationTests;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class BookShelfControllerTest {
-    private MockMvc mockMvc;
+public class BookShelfControllerTest  extends SpringBootWebApplicationTests{
+
+    @Autowired
+    private BookShelfController bookShelfController;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    private Book commonBook;
+
 
     @Before
     public void setUp() {
-        BookService bookService = new BookServiceImpl( new BookRepository() );
-        BookShelfController bookShelfController = new BookShelfController( bookService );
-
         mockMvc = MockMvcBuilders.standaloneSetup(bookShelfController).build();
+        commonBook = new Book("isbn", "book name", "author", 13.3);
     }
 
     @Test
@@ -113,5 +121,17 @@ public class BookShelfControllerTest {
 
         JSONArray array = (JSONArray)JSONValue.parse(result.getResponse().getContentAsString());
         assertThat( array.size(), is( 2 ));
+    }
+
+    @Test
+    public void should_find_books_by_title() throws Exception {
+        Book savedBook = bookRepository.save(commonBook);
+
+        MvcResult result =  mockMvc.perform(get(format("/books/title/%s", "name" )))
+                                   .andExpect(status().isOk())
+                                   .andReturn();
+
+        JSONArray array = (JSONArray) JSONValue.parse(result.getResponse().getContentAsString());
+        assertThat( array.size(), is( 1 ));
     }
 }

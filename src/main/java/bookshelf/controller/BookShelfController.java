@@ -3,6 +3,7 @@ package bookshelf.controller;
 import bookshelf.model.Book;
 import bookshelf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,13 +38,14 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody Iterable<Book> addBook(@RequestBody Book book) throws Exception {
 
         if ( book.getIsbn() == null || book.getIsbn().length() == 0 || book.getName() == null || book.getName().length() == 0 ){
             throw new Exception( "参数不能为空" );
         }
 
-        return bookService.addBook( book );
+        return bookService.create( book );
     }
 
     @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
@@ -52,18 +54,27 @@ public class BookShelfController {
         return bookService.findByIsbn( isbn );
     }
 
-    @RequestMapping(value = "book/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "book/edit", method = RequestMethod.PUT)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public @ResponseBody Book updateBook(@RequestBody Book book ) throws Exception {
         if ( book.getIsbn() == null || book.getIsbn().length() == 0 || book.getName() == null || book.getName().length() == 0 ){
             throw new Exception( "参数不能为空" );
         }
-        return bookService.updateBook( book );
+        return bookService.edit( book );
     }
 
-    @RequestMapping(value = "book/delete/{isbn}", method = RequestMethod.GET)
+    @RequestMapping(value = "book/delete/{isbn}", method = RequestMethod.DELETE)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public @ResponseBody Iterable<Book> deleteBook(@PathVariable String isbn) {
 
-        return bookService.deleteBook( isbn );
+        return bookService.delete( isbn );
     }
-    
+
+    @RequestMapping(value = "title/{title}", method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Iterable<Book> findByTitle(@PathVariable String title) {
+
+        return bookService.findByTitle(title);
+
+    }
 }

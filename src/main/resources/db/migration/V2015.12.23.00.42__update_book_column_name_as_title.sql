@@ -1,0 +1,2 @@
+ALTER TABLE wo_book
+CHANGE COLUMN name title VARCHAR(100) NOT NULL;

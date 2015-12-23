@@ -1,41 +1,15 @@
 package bookshelf.repository;
 
 import bookshelf.model.Book;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
 @Repository
-public class BookRepository {
+public interface BookRepository extends CrudRepository<Book, String> {
 
-    public static final Map<String, Book> BOOKS_MAP =
-            new HashMap<String, Book>() {
-                {
-                    put("9780201485677", new Book("9780201485677", "Refactoring", "Martin Fowler", 64.99));
-                    put("9780132350884", new Book("9780132350884", "Clean Code", "Robert C. Martin", 35.44));
-                    put("9780131429017", new Book("9780131429017", "The Art of UNIX Programming", "Eric S. Raymond", 39.99));
-                }
-            };
-
-    public Iterable<Book> findAll() {
-        return BOOKS_MAP.values();
-    }
-
-    public Book findOne(String isbn) {
-        return BOOKS_MAP.get(isbn);
-    }
-
-    public void updateOne( Book book ){
-        BOOKS_MAP.put( book.getIsbn(), book );
-    }
-
-    public void addBook( Book book){
-        BOOKS_MAP.put( book.getIsbn(), book );
-    }
-
-    public void deleteBook( String isbn ){
-        BOOKS_MAP.remove( isbn );
-    }
+    @Query( "select book from Book book where book.title like %?1%" )
+    Iterable<Book> findByTitle(String title);
 
 }
 
