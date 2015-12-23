@@ -4,15 +4,14 @@ import bookshelf.model.Book;
 import bookshelf.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class BookServiceImpl implements BookService{
-    private BookRepository bookRepository;
 
     @Autowired
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    private BookRepository bookRepository;
 
     @Override
     public Iterable<Book> findAll() {

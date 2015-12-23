@@ -14,13 +14,14 @@ public class Book {
     @Column(name = "isbn", length = 30)
     @NotNull
     private String isbn;
-    @Column(name = "title", nullable = false, length = 100)
-    private String name;
+    @Column(name = "name", nullable = false, length = 100)
+    private String title;
     @Column(name = "author", nullable = false, length = 30)
     private String author;
     @Column(name = "price", nullable = false)
     private Double price;
-
+    @Column(name = "category_code")
+    private String categoryCode;
 
     public Book() {
 
@@ -28,13 +29,13 @@ public class Book {
 
     public Book(String isbn, String name, String author, Double price) {
         this.isbn = isbn;
-        this.name = name;
+        this.title = name;
         this.author = author;
         this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
 
@@ -52,4 +53,7 @@ public class Book {
         return price;
     }
 
+    public void setCategoryCode(String categoryCode) {
+        this.categoryCode = categoryCode;
+    }
 }
