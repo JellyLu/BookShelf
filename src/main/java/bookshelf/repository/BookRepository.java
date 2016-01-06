@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends CrudRepository<Book, String> {
 
-     @Query( "select book from Book b where b.title like %?1%" )
+     @Query( "select b from Book b where b.title like %?1%" )
      Iterable<Book> findByTitle(String title);
 
+
+     Iterable<Book> findByCategoryCode( String code );
 }
 

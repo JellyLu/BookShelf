@@ -14,4 +14,6 @@ public interface BookService {
     Iterable<Book> delete( String isbn );
 
     Iterable<Book> findByTitle( String title );
+
+    Iterable<Book> findByCategoryName( String name );
 }
