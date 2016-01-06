@@ -6,4 +6,4 @@ CREATE TABLE wo_book (
   price DOUBLE NOT NULL
 );
 
-INSERT INTO wo_book(isbn, name, author, price) VALUES('isbn', 'book name', 'author', 55.20);
+INSERT INTO wo_book(isbn, name, author, price) VALUES('9780201485677', 'Refactoring', 'Martin Fowler', 64.57);
