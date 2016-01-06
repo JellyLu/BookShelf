@@ -31,22 +31,19 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public Iterable<Book> create( Book book ){
+    public void create( Book book ){
          bookRepository.save( book );
-         return bookRepository.findAll();
     }
 
     @Override
-    public Book edit( Book book ){
+    public void edit( Book book ){
          bookRepository.save( book );
-         return bookRepository.findOne( book.getIsbn() );
     }
 
     @Override
-    public Iterable<Book> delete( String isbn ){
+    public void delete( String isbn ){
 
          bookRepository.delete( isbn );
-         return bookRepository.findAll();
     }
 
     @Override
