@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <title>Edit Book</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="./css/editBook.css">
+  <link href="../../components/header/header.html" rel="import" id="Header">
+  <link href="../../components/form/form.html" rel="import" id="Form">
+  <link href="../../components/footer/footer.html" rel="import" id="Footer">
+  <script src="../../utils/httpRequest.js"></script>
+  <script src="../../utils/getQueryParam.js"></script>
+  <script src="../../config/Constants.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+  var Header = document.querySelector('#Header');
+  document.body.appendChild(Header.import.querySelector('.head'));
+</script>
+
+<script type="text/javascript">
+  var Form = document.querySelector('#Form');
+  document.body.appendChild(Form.import.querySelector('.form'));
+</script>
+
+<script type="text/javascript">
+  var Footer = document.querySelector('#Footer');
+  document.body.appendChild(Footer.import.querySelector('.foot'));
+</script>
+
+<script src="./js/editBook.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+</body>
+</html>

@@ -2,47 +2,6 @@ body{
     background-color:#EEEEEE;
 }
 
-.header{
-  width:80;
-  padding-left:10%;
-  padding-right:10%;
-  height:125px;
-  line-height:120px;
-}
-
-.header .headLeft{
-  width:50%;
-  float:left;
-  height:120px;
-}
-
-.header .headRight{
-  width:50%;
-  float:left;
-  height:120px;
-  color:#777777;
-  text-align:right;
-  font-size:16pt;
-}
-
-.header .headLeft .shelfHead{
-  width:336px;
-  height:120px;
-  background-color:#317ee7;
-  background-image:url('../ac/logo@2x.png');
-  background-repeat:no-repeat;
-  background-position:center;
-  border-radius:15px;
-
-}
-
-.header .headLeft .shelfHead .shelfName{
-  visibility:hidden;
-}
-
-.header .headRight .blank{
-  color:#999999;
-}
 
 .demobanner{
   width:80%;
@@ -55,65 +14,6 @@ body{
 .demobanner .img{
    border:7px #317EE7 solid;
    width:100%;
-}
-
-.middle{
-  background-color:#317EE7;
-  height:80px;
-  line-height:80px;
-  font-size:18pt;
-  min-width:950px;
-  padding-left:100px;
-  clear:both;
-  z-index:2;
-  zoom:1;
-}
-
-
-.middle li{
-    padding-top:2px;
-    margin-right:30x;
-    float:left;
-}
-
-.middle li a{
-    color:#FFFFFF;
-    padding:0 15px;
-    height:80px;
-    line-height:80px;
-    display:block;
-    -webkit-transition:all .2s ease-in;/* Safari 和 Chrome */
-    -moz-transition:all .2s ease-in;/* Firefox 4 */
-    -o-transition:all .2s ease-in;/* Opera */
-    -ms-transition:all .2s ease-in;
-    transition:all .2s ease-in;
-
-}
-
-.middle li a:hover,
-.middle li .cur a{
-    background-color:#5196F4;
-}
-
-.middle li a + ul{
-    position:absolute;
-    z-index:10;
-    visibility:hidden;
-}
-
-.middle li a + ul > li a,
-.middle li.cur ur > li a{
-    background-color:rgba( 81, 150, 244, 0.9);
-}
-
-.middle li a + ul > li a:hover{
-    background-color:rgba( 49, 126, 231, 0.9);
-}
-
-.middle ul{
-    list-style:none;
-     margin: 0 auto;
-     position: relative;
 }
 
 .bookshelf{
@@ -179,6 +79,7 @@ td .button{
     padding:5px 10px;
     font-size:14pt;
     color:#FFFFFF;
+    margin-left:10px;
 }
 
 td .button:hover{
@@ -194,28 +95,6 @@ td .button:hover{
     top: 30px;
 }
 
-.foot a:link {
- 	color:#9D9D9D;
- }
-
 a:link{
     text-decoration:none;
 }
-a:hover {
-  	color:#777;
-  }
-
-
-.foot{
-    color:#9d9d9d;
-    font:15px;
-    font-weight:bold;
-    text-align:center;
-    margin-top:22px;
-    border-top-style:dashed;
-    border-top-color:#D3C6BC;
-    width:80%;
-    margin-left:10%;
-    margin-right:10%;
-}
-

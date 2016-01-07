@@ -1,0 +1,36 @@
+.form{
+    width:60%;
+    margin-left:25%;
+    margin-top:3rem;
+    margin-bottom: 60px;
+}
+
+.form__element{
+    margin-bottom: .5rem;
+    width:100%;
+    height:50px;
+    line-height:50px;
+}
+
+.form__element--text-left{
+    font-size:2rem;
+    text-align:right;
+    width:25%;
+    float:left;
+}
+
+.form__element--input-right{
+    font-size:2rem;
+    width:40%;
+    float:left;
+    margin-left:10px;
+}
+
+.form__element--submit{
+    font-size:2rem;
+    width:13rem;
+    border-radius:4px;
+    background-color:#317EE7;
+    border-color:#317EE7;
+    margin-left:20%;
+}

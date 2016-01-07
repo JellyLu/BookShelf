@@ -62,8 +62,8 @@ sourceSets {
         resources.srcDirs = ['src/main/resources']
     }
     test {
-        java.srcDirs = ['src/test/intg/java', 'src/test/unit/java']
-        resources.srcDirs = ['src/test/intg/resources', 'src/test/unit/resources']
+        java.srcDirs = ['src/test/java', 'src/test/java']
+        resources.srcDirs = ['src/test/resources', 'src/test/resources']
     }
 }
 
