@@ -1,24 +1,19 @@
 package controller;
 
+import application.SpringBootWebApplicationTests;
 import bookshelf.controller.BookShelfController;
 import bookshelf.model.Book;
 import bookshelf.repository.BookRepository;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONValue;
-import application.SpringBootWebApplicationTests;
+import bookshelf.repository.CategoryRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static java.lang.String.format;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class BookShelfControllerTest  extends SpringBootWebApplicationTests{
 
@@ -28,113 +23,24 @@ public class BookShelfControllerTest  extends SpringBootWebApplicationTests{
     @Autowired
     private BookRepository bookRepository;
 
-    private Book commonBook;
-
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Before
     public void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(bookShelfController).build();
-        commonBook = new Book("9780201485677", "Refactoring", "Martin Fowler", 64.57);
-
     }
 
     @Test
-    public void should_json_array_size_is_1() throws Exception {
+    public void should_search_book_by_isbn_successfully() throws Exception {
+        Book savedBook = bookRepository.save(new Book("book-isbn", "Book Name", "Book Author", 32.52));
 
-        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                                  .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                                  .andExpect(status().isOk())
-                                  .andReturn();
-
-        JSONArray array = (JSONArray)JSONValue.parse(result.getResponse().getContentAsString());
-        assertThat( array.size(), is( 1 ));
-    }
-
-    @Test
-    public void test_find_book_9780201485677() throws Exception {
-
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/9780201485677")
-                                   .accept(MediaType.APPLICATION_JSON))
-                                   .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                                   .andExpect(status().isOk())
-                                   .andExpect(jsonPath("$.title").value("Refactoring"))
-                                   .andReturn();
-
-        String response = result.getResponse().getContentAsString();
-        assertThat( response, is( "{\"isbn\":\"9780201485677\",\"title\":\"Refactoring\",\"author\":\"Martin Fowler\",\"price\":64.57}"));
-    }
-
-    @Test
-    public void test_new_book() throws Exception {
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/new")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+        String isbn = savedBook.getIsbn();
+        mockMvc.perform(get(format("/books/%s", isbn)))
                 .andExpect(status().isOk())
-                .andReturn();
-
-        String response = result.getResponse().getContentAsString();
-        assertThat( response, is( "{\"isbn\":\"\",\"title\":\"\",\"author\":\"\",\"price\":0.0}"));
-    }
-
-    @Test
-    public void test_add_book() throws Exception {
-        String requestBody = "{\"isbn\":\"9780132350884\", \"title\":\"Clean Code\",\"author\":\"Robert C. Martin\",\"price\":49.44}";
-        MvcResult result  = mockMvc.perform( MockMvcRequestBuilders.post("/book")
-                .contentType(MediaType.APPLICATION_JSON).content(requestBody)
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andReturn();
-
-        JSONArray array = (JSONArray)JSONValue.parse(result.getResponse().getContentAsString());
-        assertThat( array.size(), is( 2 ));
-    }
-
-    @Test
-    public void test_edit_book_9780201485677() throws Exception {
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/edit/9780201485677")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title").value("Refactoring"))
-                .andReturn();
-
-        String response = result.getResponse().getContentAsString();
-        assertThat( response, is( "{\"isbn\":\"9780201485677\",\"name\":\"Refactoring\",\"author\":\"Martin Fowler\",\"price\":64.57}"));
-    }
-
-    @Test
-    public void test_update_9780201485677() throws Exception {
-        String requestBody = "{\"isbn\":\"9780201485677\", \"name\":\"Refactoring\",\"author\":\"Martin Fowler\",\"price\":32.44}";
-        mockMvc.perform( MockMvcRequestBuilders.post("/book/edit")
-                .contentType(MediaType.APPLICATION_JSON).content(requestBody)
-                .accept(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.price").value(32.44))
-                .andReturn();
-
-    }
-
-    @Test
-    public void test_delete_book() throws Exception {
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.get("/book/delete/9780132350884")
-                .accept(MediaType.APPLICATION_JSON))
-              //  .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk())
-                .andReturn();
-
-        JSONArray array = (JSONArray)JSONValue.parse(result.getResponse().getContentAsString());
-        assertThat( array.size(), is( 1 ));
-    }
-
-    @Test
-    public void should_find_books_by_title() throws Exception {
-
-        MvcResult result =  mockMvc.perform(get(format("/books/title/%s", "Refactoring" )))
-                                  // .andExpect(status().isOk())
-                                   .andExpect(jsonPath("$.isbn").value("9780201485677"))
-                                   .andReturn();
-
-        JSONArray array = (JSONArray) JSONValue.parse(result.getResponse().getContentAsString());
-        assertThat( array.size(), is( 1 ));
+                .andExpect(jsonPath("$.isbn").value(isbn))
+                .andExpect(jsonPath("$.title").value(savedBook.getTitle()))
+                .andExpect(jsonPath("$.author").value(savedBook.getAuthor()))
+                .andExpect(jsonPath("$.price").value(savedBook.getPrice()));
     }
 }

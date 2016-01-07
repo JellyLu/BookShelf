@@ -19,14 +19,14 @@ public class BookShelfController {
         this.bookService = bookService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Book> queryBooks() {
+    @RequestMapping( method = RequestMethod.GET)
+    public @ResponseBody Iterable<Book> query() {
 
        return bookService.findAll();
     }
 
-    @RequestMapping(value = "book/{isbn}", method = RequestMethod.GET)
-    public @ResponseBody Book getBook(@PathVariable String isbn) {
+    @RequestMapping(value = "{isbn}", method = RequestMethod.GET)
+    public Book get(@PathVariable String isbn) {
 
         return bookService.findByIsbn(isbn);
     }
@@ -37,7 +37,7 @@ public class BookShelfController {
         return  new Book("","","",0.0);
     }
 
-    @RequestMapping(value = "book", method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody Iterable<Book> addBook(@RequestBody Book book) throws Exception {
 
@@ -54,23 +54,23 @@ public class BookShelfController {
         return bookService.findByIsbn( isbn );
     }
 
-    @RequestMapping(value = "book/edit", method = RequestMethod.PUT)
+    @RequestMapping(value = "{isbn}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public @ResponseBody Book updateBook(@RequestBody Book book ) throws Exception {
-        if ( book.getIsbn() == null || book.getIsbn().length() == 0 || book.getTitle() == null || book.getTitle().length() == 0 ){
-            throw new Exception( "参数不能为空" );
+    public @ResponseBody Book updateBook( @PathVariable String isbn, @RequestBody Book book ) throws Exception {
+        if ( !isbn.equals( book.getIsbn() ) ){
+            throw new Exception( "不能编辑" );
         }
         return bookService.edit( book );
     }
 
-    @RequestMapping(value = "book/delete/{isbn}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "{isbn}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public @ResponseBody Iterable<Book> deleteBook(@PathVariable String isbn) {
 
         return bookService.delete( isbn );
     }
 
-    @RequestMapping(value = "books/title/{title}", method = RequestMethod.GET)
+    @RequestMapping(value = "title/{title}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Iterable<Book> findByTitle(@PathVariable String title) {
 
@@ -78,7 +78,7 @@ public class BookShelfController {
 
     }
 
-    @RequestMapping(value = "books/category/{name}", method = RequestMethod.GET)
+    @RequestMapping(value = "category/{name}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Iterable<Book> findByCategoryName(@PathVariable String name) {
 
