@@ -52,7 +52,7 @@ table{
 
 tbody tr{
      height:80px;
-     line-height:80px;
+    // line-height:80px;
      border-bottom:1px solid #CCCCCC;
 }
 
@@ -78,12 +78,13 @@ td .button{
     background-color:#317EE7;
     padding:5px 10px;
     font-size:14pt;
-    color:#FFFFFF;
+    color:#FFF;
     margin-left:10px;
+
 }
 
 td .button:hover{
-    color:#FFFFFF;
+    color:#FFF;
     opacity: 0.8;
 }
 
@@ -97,4 +98,8 @@ td .button:hover{
 
 a:link{
     text-decoration:none;
+}
+
+.pagination{
+    margin:20px 35% 5px 30%;
 }

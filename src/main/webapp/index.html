@@ -4,6 +4,7 @@
     <title>TW Bookshelf</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link style="text/css" rel='stylesheet' href="css/index.css">
+    <link rel="stylesheet" href="css/pagination.css">
     <link href="./components/header/header.html" rel="import" id="Header">
     <link href="./components/footer/footer.html" rel="import" id="Footer">
     <script src="./utils/httpRequest.js"></script>
@@ -33,9 +34,11 @@
                     <th class="col-title">操作</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="test">
+
                 </tbody>
             </table>
+            <div id="Pagination" class="pagination"></div>
         </div>
         <a class="more" href="#">更多&gt;&gt;</a>
     </div>
@@ -47,5 +50,6 @@
 
 <script src="js/index.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js"></script>
+<script src="utils/jquery.pagination.js"></script>
 </body>
 </html>

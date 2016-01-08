@@ -1,6 +1,7 @@
 package bookshelf.service;
 
 import bookshelf.model.Book;
+import org.springframework.data.domain.Pageable;
 
 public interface BookService {
     Iterable<Book> findAll();
@@ -16,4 +17,6 @@ public interface BookService {
     Iterable<Book> findByTitle( String title );
 
     Iterable<Book> findByCategoryName( String name );
+
+    Iterable<Book> findByPage(Pageable pageable);
 }

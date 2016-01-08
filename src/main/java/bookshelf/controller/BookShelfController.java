@@ -3,6 +3,8 @@ package bookshelf.controller;
 import bookshelf.model.Book;
 import bookshelf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +22,16 @@ public class BookShelfController {
     }
 
     @RequestMapping( method = RequestMethod.GET)
-    public @ResponseBody Iterable<Book> query() {
+    public Iterable<Book> query() {
 
        return bookService.findAll();
+    }
+
+    @RequestMapping( value="/page/{pageIndex}/{pageSize}", method = RequestMethod.GET)
+    public Iterable<Book> queryBooks(@PathVariable String pageIndex, @PathVariable String pageSize ) {
+
+        Pageable pageable =  new PageRequest( Integer.parseInt( pageIndex ) , Integer.parseInt( pageSize ));
+        return bookService.findByPage( pageable );
     }
 
     @RequestMapping(value = "{isbn}", method = RequestMethod.GET)
@@ -32,7 +41,7 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book/new", method = RequestMethod.GET)
-    public @ResponseBody Book createBook(){
+    public Book createBook(){
 
         return  new Book("","","",0.0);
     }
@@ -49,14 +58,13 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "book/edit/{isbn}", method = RequestMethod.GET)
-    public @ResponseBody Book editBook(@PathVariable String isbn) {
+    public Book editBook(@PathVariable String isbn) {
 
         return bookService.findByIsbn( isbn );
     }
 
     @RequestMapping(value = "{isbn}", method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public @ResponseBody Book updateBook( @PathVariable String isbn, @RequestBody Book book ) throws Exception {
+    public Book updateBook( @PathVariable String isbn, @RequestBody Book book ) throws Exception {
         if ( !isbn.equals( book.getIsbn() ) ){
             throw new Exception( "不能编辑" );
         }
@@ -64,14 +72,12 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "{isbn}", method = RequestMethod.DELETE)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public @ResponseBody Iterable<Book> deleteBook(@PathVariable String isbn) {
 
         return bookService.delete( isbn );
     }
 
     @RequestMapping(value = "title/{title}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Iterable<Book> findByTitle(@PathVariable String title) {
 
         return bookService.findByTitle(title);
@@ -79,7 +85,6 @@ public class BookShelfController {
     }
 
     @RequestMapping(value = "category/{name}", method = RequestMethod.GET)
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public Iterable<Book> findByCategoryName(@PathVariable String name) {
 
         return bookService.findByCategoryName(name);

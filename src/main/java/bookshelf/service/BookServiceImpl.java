@@ -5,6 +5,7 @@ import bookshelf.model.Category;
 import bookshelf.repository.BookRepository;
 import bookshelf.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -61,4 +62,10 @@ public class BookServiceImpl implements BookService{
         Optional.ofNullable(category).orElseThrow(()->new RuntimeException( "Category can not find" ));
         return bookRepository.findByCategoryCode( category.getCode() );
     }
+
+    @Override
+    public  Iterable<Book> findByPage( Pageable pageable ){
+        return bookRepository.findAll( pageable );
+    }
+
 }
