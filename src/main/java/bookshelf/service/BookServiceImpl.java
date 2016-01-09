@@ -5,6 +5,7 @@ import bookshelf.model.Category;
 import bookshelf.repository.BookRepository;
 import bookshelf.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,8 +65,9 @@ public class BookServiceImpl implements BookService{
     }
 
     @Override
-    public  Iterable<Book> findByPage( Pageable pageable ){
-        return bookRepository.findAll( pageable );
+    public  Page<Book> findByPage( Pageable pageable ){
+        Page<Book> pages = bookRepository.findAll( pageable );
+        return pages;
     }
 
 }

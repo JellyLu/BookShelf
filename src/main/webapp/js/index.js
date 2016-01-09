@@ -1,15 +1,21 @@
- window.onload = function(){
-       var tableElements = [];
-       var bookList = document.querySelector('tbody');
-
-       var deleteRow = function(isbn){
-            var rows = bookList.getElementsByTagName('tr');
+ var page_index = {
+     bookList: document.querySelector('.indexBody'),
+     pageCount:7,
+     pageIndex:0,   //页索引
+     pageSize:3,    //每页显示的条数
+     firstQuest:true,
+     deleteRow: function(isbn){
+            var rows = page_index.bookList.getElementsByTagName('tr');
             for( var i = 0, len = rows.length; i < len; ++ i ){
-                bookList.removeChild( rows[i] );
+                if( rows[i].querySelector('.col-isbn').textContent === isbn ){
+                      page_index.bookList.removeChild( rows[i] );
+                      page_index.pageCount--;
+                      page_index.refresh();
+                }
             }
-       };
+       },
 
-       var createRow = function( book ){
+     createRow: function( book ){
             var tr = document.createElement('tr');
 
             if( !book ){
@@ -27,7 +33,9 @@
             var editBtn = document.createElement('a');
             editBtn.textContent = '编辑';
             editBtn.setAttribute('class', 'button');
-            editBtn.setAttribute('href', 'pages/book/editBook.html?isbn=' + book[tableHeaderMapper.ISBN]);
+            editBtn.addEventListener('click',function(){
+               window.location = 'pages/book/editBook.html?isbn=' + book[tableHeaderMapper.ISBN];;
+            });
             td.appendChild( editBtn );
 
             var deleteBtn = document.createElement('a');
@@ -38,7 +46,8 @@
                     url: baseUrl + '/' + book[tableHeaderMapper.ISBN],
                     type:'DELETE',
                     success:function(){
-                        deleteRow( book[tableHeaderMapper.ISBN] );
+                        page_index.deleteRow( book[tableHeaderMapper.ISBN] );
+                        page_index.refresh();
                     }
                 });
             });
@@ -46,40 +55,53 @@
             td.setAttribute( 'class', 'col-operates' );
             tr.appendChild(td);
             return tr;
-       };
+     },
+     refresh:function(){
 
-       var pageIndex =0;   //页索引
-       var pageSize =3;    //每页显示的条数
-       $("#Pagination").pagination( 7, {
-                callback: PageCallback,
-                prev_text: '上一页',
-                next_text: '下一页',
-                items_per_page: pageSize,
-                num_display_entries: 5,
-                current_page: pageIndex,
-                num_edge_entries: 1
-       });
-       function PageCallback(index, jq) {
-                Init(index);
-       }
+         page_index.pagege = $("#Pagination").pagination( page_index.pageCount, {
+                     callback: pageCallback,
+                     prev_text: '上一页',
+                     next_text: '下一页',
+                     items_per_page: page_index.pageSize,
+                     num_display_entries: 5,
+                     current_page: page_index.pageIndex,
+                     num_edge_entries: 1
+         });
 
-       function Init( index ) {
-           $(bookList).empty();//移除所有的数据行
+         function pageCallback(index, jq) {
+              page_index.init(index);
+         }
+
+     },
+     init:function( index ) {
            $.ajax({
                type: "GET",
                dataType: "json",
-               url:baseUrl + '/page/' + index + '/' + pageSize,
+               url:baseUrl + '/page/' + index + '/' + page_index.pageSize,
                success: function(data) {
                    if( data ){
+                       page_index.pageCount = data.totalElements;
+
                        var books= data.content;
+                       $(page_index.bookList).empty();
                        books.forEach( function( book ){
-                         var tr = createRow( book );
-                         tableElements.push(tr);
-                         $(bookList).append(tr);
+                            var tr = page_index.createRow( book );
+                             page_index.bookList.appendChild(tr);
                        });
+                       if( page_index.firstQuest ){
+                           page_index.refresh();
+                           page_index.firstQuest = false;
+                       }
                    }
                }
+
            });
-       }
+     }
 
  };
+
+ window.onload = function(){
+    page_index.init(0);
+
+ };
+

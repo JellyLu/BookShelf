@@ -24,14 +24,14 @@ jQuery.fn.pagination = function(maxentries, opts){
 
 	return this.each(function() {
 		/**
-		 * 璁＄畻鏈€澶у垎椤垫樉绀烘暟鐩�
+		 * 计算最大分页显示数目
 		 */
 		function numPages() {
 			return Math.ceil(maxentries/opts.items_per_page);
 		}
 		/**
-		 * 鏋佺鍒嗛〉鐨勮捣濮嬪拰缁撴潫鐐癸紝杩欏彇鍐充簬current_page 鍜� num_display_entries.
-		 * @杩斿洖 {鏁扮粍(Array)}
+		 * 极端分页的起始和结束点，这取决于current_page 和 num_display_entries.
+		 * @返回 {数组(Array)}
 		 */
 		function getInterval()  {
 			var ne_half = Math.ceil(opts.num_display_entries/2);
@@ -43,8 +43,8 @@ jQuery.fn.pagination = function(maxentries, opts){
 		}
 
 		/**
-		 * 鍒嗛〉閾炬帴浜嬩欢澶勭悊鍑芥暟
-		 * @鍙傛暟 {int} page_id 涓烘柊椤电爜
+		 * 分页链接事件处理函数
+		 * @参数 {int} page_id 为新页码
 		 */
 		function pageSelected(page_id, evt){
 			current_page = page_id;
@@ -62,19 +62,19 @@ jQuery.fn.pagination = function(maxentries, opts){
 		}
 
 		/**
-		 * 姝ゅ嚱鏁板皢鍒嗛〉閾炬帴鎻掑叆鍒板鍣ㄥ厓绱犱腑
+		 * 此函数将分页链接插入到容器元素中
 		 */
 		function drawLinks() {
 			panel.empty();
 			var interval = getInterval();
 			var np = numPages();
-			// 杩欎釜杈呭姪鍑芥暟杩斿洖涓€涓鐞嗗嚱鏁拌皟鐢ㄦ湁鐫€姝ｇ‘page_id鐨刾ageSelected銆�
+			// 这个辅助函数返回一个处理函数调用有着正确page_id的pageSelected。
 			var getClickHandler = function(page_id) {
 				return function(evt){ return pageSelected(page_id,evt); }
 			}
-			//杈呭姪鍑芥暟鐢ㄦ潵浜х敓涓€涓崟閾炬帴(濡傛灉涓嶆槸褰撳墠椤靛垯浜х敓span鏍囩)
+			//辅助函数用来产生一个单链接(如果不是当前页则产生span标签)
 			var appendItem = function(page_id, appendopts){
-				page_id = page_id<0?0:(page_id<np?page_id:np-1); // 瑙勮寖page id鍊�
+				page_id = page_id<0?0:(page_id<np?page_id:np-1); // 规范page id值
 				appendopts = jQuery.extend({text:page_id+1, classes:""}, appendopts||{});
 				if(page_id == current_page){
 					var lnk = jQuery("<span class='current'>"+(appendopts.text)+"</span>");
@@ -86,11 +86,11 @@ jQuery.fn.pagination = function(maxentries, opts){
 				if(appendopts.classes){lnk.addClass(appendopts.classes);}
 				panel.append(lnk);
 			}
-			// 浜х敓"Previous"-閾炬帴
+			// 产生"Previous"-链接
 			if(opts.prev_text && (current_page > 0 || opts.prev_show_always)){
 				appendItem(current_page-1,{text:opts.prev_text, classes:"prev"});
 			}
-			// 浜х敓璧峰鐐�
+			// 产生起始点
 			if (interval[0] > 0 && opts.num_edge_entries > 0)
 			{
 				var end = Math.min(opts.num_edge_entries, interval[0]);
@@ -102,11 +102,11 @@ jQuery.fn.pagination = function(maxentries, opts){
 					jQuery("<span>"+opts.ellipse_text+"</span>").appendTo(panel);
 				}
 			}
-			// 浜х敓鍐呴儴鐨勪簺閾炬帴
+			// 产生内部的些链接
 			for(var i=interval[0]; i<interval[1]; i++) {
 				appendItem(i);
 			}
-			// 浜х敓缁撴潫鐐�
+			// 产生结束点
 			if (interval[1] < np && opts.num_edge_entries > 0)
 			{
 				if(np-opts.num_edge_entries > interval[1]&& opts.ellipse_text)
@@ -119,20 +119,20 @@ jQuery.fn.pagination = function(maxentries, opts){
 				}
 
 			}
-			// 浜х敓 "Next"-閾炬帴
+			// 产生 "Next"-链接
 			if(opts.next_text && (current_page < np-1 || opts.next_show_always)){
 				appendItem(current_page+1,{text:opts.next_text, classes:"next"});
 			}
 		}
 
-		//浠庨€夐」涓彁鍙朿urrent_page
+		//从选项中提取current_page
 		var current_page = opts.current_page;
-		//鍒涘缓涓€涓樉绀烘潯鏁板拰姣忛〉鏄剧ず鏉℃暟鍊�
+		//创建一个显示条数和每页显示条数值
 		maxentries = (!maxentries || maxentries < 0)?1:maxentries;
 		opts.items_per_page = (!opts.items_per_page || opts.items_per_page < 0)?1:opts.items_per_page;
-		//瀛樺偍DOM鍏冪礌锛屼互鏂逛究浠庢墍鏈夌殑鍐呴儴缁撴瀯涓幏鍙�
+		//存储DOM元素，以方便从所有的内部结构中获取
 		var panel = jQuery(this);
-		// 鑾峰緱闄勫姞鍔熻兘鐨勫厓绱�
+		// 获得附加功能的元素
 		this.selectPage = function(page_id){ pageSelected(page_id);}
 		this.prevPage = function(){
 			if (current_page > 0) {
@@ -152,10 +152,12 @@ jQuery.fn.pagination = function(maxentries, opts){
 				return false;
 			}
 		}
-		// 鎵€鏈夊垵濮嬪寲瀹屾垚锛岀粯鍒堕摼鎺�
+		// 所有初始化完成，绘制链接
 		drawLinks();
-        // 鍥炶皟鍑芥暟
+        // 回调函数
         opts.callback(current_page, this);
 	});
 }
+
+
 
