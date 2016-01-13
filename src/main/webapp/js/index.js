@@ -1,13 +1,13 @@
  var page_index = {
      bookList: document.querySelector('.indexBody'),
-     pageCount:7,
+     pageCount:0,
      pageIndex:0,   //页索引
      pageSize:3,    //每页显示的条数
      firstQuest:true,
      deleteRow: function(isbn){
             var rows = page_index.bookList.getElementsByTagName('tr');
             for( var i = 0, len = rows.length; i < len; ++ i ){
-                if( rows[i].querySelector('.col-isbn').textContent === isbn ){
+                if( $(rows[i].querySelector('.col-isbn')).textContent === isbn ){
                       page_index.bookList.removeChild( rows[i] );
                       page_index.pageCount--;
                       page_index.refresh();
@@ -58,7 +58,7 @@
      },
      refresh:function(){
 
-         page_index.pagege = $("#Pagination").pagination( page_index.pageCount, {
+         page_index.page = $("#Pagination").pagination( page_index.pageCount, {
                      callback: pageCallback,
                      prev_text: '上一页',
                      next_text: '下一页',
